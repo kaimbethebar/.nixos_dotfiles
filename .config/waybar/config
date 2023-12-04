@@ -9,32 +9,13 @@
     "modules-center": ["clock"],
     "modules-right": [ "pulseaudio", "memory", "tray"],
     
-"sway/workspaces": {
-    "format": "{name}",
-    "on-click": "activate",
-    "sort-by-number": true
-},
+    "sway/workspaces": {
+        "format": "{name}",
+        "on-click": "activate",
+        "sort-by-number": true
+    },
 
-    "keyboard-state": {
-        "numlock": true,
-        "capslock": true,
-        "format": "{name} {icon}",
-        "format-icons": {
-            "locked": "",
-            "unlocked": ""
-        }
-    },
-    "sway/mode": {
-        "format": "<span style=\"italic\">{}</span>"
-    },
-    "sway/scratchpad": {
-        "format": "{icon} {count}",
-        "show-empty": false,
-        "format-icons": ["", ""],
-        "tooltip": true,
-        "tooltip-format": "{app}: {title}"
-    },
-        "tray": {
+    "tray": {
         // "icon-size": 21,
         "spacing": 10
     },

@@ -2,23 +2,25 @@
 
 {
   imports =
-	[ # Include the results of the hardware scan.
-  	  ./hardware-configuration.nix
-	];
+    [ # Include the results of the hardware scan.
+      ./hardware-configuration.nix
+      # Package List 
+      ./packages.nix 
+    ];
 
   # Bootloader.
   boot.loader = {
-	systemd-boot.enable = false;
-	efi = {
-  	canTouchEfiVariables = true;
-  	efiSysMountPoint = "/boot";
-	};
-	grub = {
-  	devices = [ "nodev" ];
-  	enable = true;
-  	efiSupport = true;
-  	useOSProber = true;
-	};
+    systemd-boot.enable = false;
+    efi = {
+      canTouchEfiVariables = true;
+      efiSysMountPoint = "/boot";
+    };
+    grub = {
+      devices = [ "nodev" ];
+      enable = true;
+      efiSupport = true;
+      useOSProber = true;
+    };
   };
 
   networking.hostName = "Nixie"; # Define your hostname.
@@ -47,13 +49,9 @@
   # Enable Sway
   programs.sway.enable = true;
 
-  # Enable the X11 windowing system.
+  # Setup xserver for GDM
   services.xserver.enable = true;
-
-  # Enable the Gnome and remove unwanted software
   services.xserver.displayManager.gdm.enable = true;
-
-  # Configure keymap in X11
   services.xserver = {
 	layout = "us";
 	xkbVariant = "";
@@ -78,55 +76,15 @@
 	isNormalUser = true;
 	description = "Jesse Rowan";
 	extraGroups = [ "networkmanager" "wheel" "audio" "video" ];
-	packages = with pkgs; [	];
   };
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-        swaybg 
-	vim
-        kitty
-        cava
-        wofi
-        waybar
-	neofetch
-	btop
-        git
-        grim
-        slurp
-        ranger
-        gimp
-        alejandra
-        firefox
-        discord
-        imv
-        mpv
-  ];
-
-  fonts.fonts = with pkgs; [
-    font-awesome
-    nerdfonts
-  ];
-
-  # Enable Firewall
+  # Enable Firewall and SSH
   networking.firewall.enable = true;  
-
-  # Enable Steam
-  programs.steam = {
-	enable = true;
-	remotePlay.openFirewall = true;
-	dedicatedServer.openFirewall = true;
-  };
-  hardware.opengl.driSupport32Bit = true;
-
   services.openssh.enable = true;
 
-  system.stateVersion = "23.05"; # Did you read the comment?
+  # Auto Upgrade
+  system.autoUpgrade.enable = true;
+  system.autoUpgrade.allowReboot = true;
+
+  system.stateVersion = "23.05";
 }
-
-
-
