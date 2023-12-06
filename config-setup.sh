@@ -10,13 +10,12 @@ rm ~/.bashrc
 mkdir ~/.config
 
 
-ln -s ~/nixos_dotfiles/.config/cava ~/.config/cava
-ln -s ~/nixos_dotfiles/.config/kitty ~/.config/kitty
-ln -s ~/nixos_dotfiles/.config/ranger ~/.config/ranger
-ln -s ~/nixos_dotfiles/.config/sway ~/.config/sway
-ln -s ~/nixos_dotfiles/.config/waybar ~/.config/waybar
-ln -s ~/nixos_dotfiles/.config/wofi ~/.config/wofi
-ln -s ~/nixos_dotfiles/.config/.bashrc ~/.bashrc
+ln -s ~/.nixos_dotfiles/config/kitty ~/.config/kitty
+ln -s ~/.nixos_dotfiles/config/ranger ~/.config/ranger
+ln -s ~/.nixos_dotfiles/config/sway ~/.config/sway
+ln -s ~/.nixos_dotfiles/config/waybar ~/.config/waybar
+ln -s ~/.nixos_dotfiles/config/wofi ~/.config/wofi
+ln -s ~/.nixos_dotfiles/config/.bashrc ~/.bashrc
 
 
 echo "Finished";read
